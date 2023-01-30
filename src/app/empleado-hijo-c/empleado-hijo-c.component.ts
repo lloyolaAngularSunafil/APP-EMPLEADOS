@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Empleado } from '../empleado.model';
+import { ServicioEmpleadosService } from '../servicio-empleados.service';
 
 @Component({
   selector: 'app-empleado-hijo-c',
@@ -11,12 +12,13 @@ export class EmpleadoHijoCComponent implements OnInit {
   @Input() empleadoDeLista: Empleado;
   @Input() indice: number;
 
-  constructor() { }
+  constructor(private miServicio:ServicioEmpleadosService) { }
 
   ngOnInit(): void {
   }
   arrayCaracteristicas=[''];
   agregarCaracteristica(nuevaCaracteristica: string){
+    this.miServicio.muestraMensaje(nuevaCaracteristica);
     this.arrayCaracteristicas.push(nuevaCaracteristica);
   }
 }
