@@ -1,7 +1,10 @@
 import { Empleado } from "src/app/empleado.model";
+import { Injectable } from '@angular/core';
+import { ServicioEmpleadosService } from './src/app/servicio-empleados.service';
 
+@Injectable()
 export class EmpleadoService {
-
+  constructor(private ServicioVentanaEmergente: ServicioEmpleadosService) { }
 
   empleados: Empleado [] = [
     new Empleado("juan","Diaz","Presidente",7500),
@@ -11,6 +14,7 @@ export class EmpleadoService {
   ];
 
   agregarEmpleadoServicio(empleado:Empleado):void {
+    this.ServicioVentanaEmergente.muestraMensaje("Persona que se va Agregar:"+empleado.nombre +"con salario"+empleado.salario);
     this.empleados.push(empleado);
   }
 }
