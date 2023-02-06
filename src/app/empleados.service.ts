@@ -1,6 +1,6 @@
 import { Empleado } from "src/app/empleado.model";
 import { Injectable } from '@angular/core';
-import { ServicioEmpleadosService } from './src/app/servicio-empleados.service';
+import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Injectable()
 export class EmpleadoService {

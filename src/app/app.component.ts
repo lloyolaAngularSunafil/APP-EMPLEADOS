@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Empleado } from './empleado.model';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
-import { EmpleadoService } from '../../empleados.service';
+import { EmpleadoService } from './empleados.service';
 
 @Component({
   selector: 'app-root',
