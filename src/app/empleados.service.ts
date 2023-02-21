@@ -17,4 +17,15 @@ export class EmpleadoService {
     this.ServicioVentanaEmergente.muestraMensaje("Persona que se va Agregar:"+empleado.nombre +"con salario"+empleado.salario);
     this.empleados.push(empleado);
   }
+  encontrarEmpleado(indice:number){
+    let empleado:Empleado = this.empleados[indice];
+    return empleado;
+  }
+  actualizarEmpleado(indice:number,empleado:Empleado){
+    let empleadoModificado:Empleado = this.empleados[indice];
+    empleadoModificado.nombre = empleado.nombre;
+    empleadoModificado.salario = empleado.salario;
+    empleadoModificado.cargo = empleado.cargo;
+    empleadoModificado.apellido=empleado.apellido;
+  }
 }

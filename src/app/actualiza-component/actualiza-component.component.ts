@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Empleado } from '../empleado.model';
 import { EmpleadoService } from '../empleados.service';
 import { ServicioEmpleadosService } from '../servicio-empleados.service';
@@ -12,22 +12,31 @@ import { ServicioEmpleadosService } from '../servicio-empleados.service';
 })
 export class ActualizaComponentComponent implements OnInit {
 
-  constructor (private router: Router,private miServicio:ServicioEmpleadosService,private empleadosService:EmpleadoService){ 
+  empleados: Empleado []=[];
+  constructor (private router: Router,private route:ActivatedRoute,private miServicio:ServicioEmpleadosService,private empleadosService:EmpleadoService){
   }
+
 
   ngOnInit(): void {
     this.empleados = this.empleadosService.empleados;
+    this.indice = this.route.snapshot.params['id'];
+    let empleado: Empleado = this.empleadosService.encontrarEmpleado(this.indice);
+    this.cuadronombre = empleado.nombre;
+    this.cuadroapellido=empleado.apellido;
+    this.cuadrocargo= empleado.cargo;
+    this.cuadrosalario=empleado.salario;
+
+
+
   }
-  empleados: Empleado []=[];
 
   volverHome(){
     this.router.navigate(['contacto']);
   }
 
-  agregarEmpleado(){
+  actualizaEmpleado(){
     let miEmpleado=new Empleado(this.cuadronombre,this.cuadroapellido,this.cuadrocargo,this.cuadrosalario);
-    //this.miServicio.muestraMensaje("Nombre del Empleado" + miEmpleado.nombre);
-    this.empleadosService.agregarEmpleadoServicio(miEmpleado);
+    this.empleadosService.actualizarEmpleado(this.indice,miEmpleado);
     this.router.navigate(['']);
   }
 
@@ -37,6 +46,6 @@ export class ActualizaComponentComponent implements OnInit {
   cuadrocargo:string="";
   cuadrosalario:number=0;
 
-
+  indice:number;
 
 }
