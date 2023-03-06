@@ -6,7 +6,9 @@ import { DataServices } from './data.services';
 @Injectable()
 export class EmpleadoService {
   constructor(private ServicioVentanaEmergente: ServicioEmpleadosService,private dataService:DataServices) { }
-
+  setEmpleados(misEmpleados:Empleado[]){
+    this.empleados=misEmpleados;
+  }
   obtenerEmpleados(){
     return this.dataService.cargarEmpleados();
   }
