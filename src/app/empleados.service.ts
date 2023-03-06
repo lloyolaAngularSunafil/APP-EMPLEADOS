@@ -7,6 +7,13 @@ import { DataServices } from './data.services';
 export class EmpleadoService {
   constructor(private ServicioVentanaEmergente: ServicioEmpleadosService,private dataService:DataServices) { }
 
+  obtenerEmpleados(){
+    return this.dataService.cargarEmpleados();
+  }
+
+  empleados: Empleado [] = [];
+  /**
+   
   empleados: Empleado [] = [
     new Empleado("juan","Diaz","Presidente",7500),
     new Empleado("Ana","Martin","Directora",5500),
@@ -14,6 +21,7 @@ export class EmpleadoService {
     new Empleado("Laura","Lopez","Administrativo",2500),
   ];
 
+   */
   agregarEmpleadoServicio(empleado:Empleado):void {
     this.ServicioVentanaEmergente.muestraMensaje("Persona que se va Agregar:"+empleado.nombre +"con salario"+empleado.salario);
     this.empleados.push(empleado);
