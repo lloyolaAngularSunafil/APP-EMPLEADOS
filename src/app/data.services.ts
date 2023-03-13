@@ -16,5 +16,12 @@ export class DataServices{
             error=>console.log("Error: "+error),
         );
     }
+    actualizarEmpleado(indice:number,empleado:Empleado){
+        let url='https://mis-clientes-3577a-default-rtdb.firebaseio.com/datos/' + indice + '.json';
+        this.httpClient.put(url,empleado).subscribe(
+            response=>console.log("Se ha modificado correctamente el empleado:"+response),
+            error=>console.log("Error: "+error),
+        );
+    }
 
 }
