@@ -45,6 +45,11 @@ export class EmpleadoService {
   }
  eliminarEmpleado(indice:number){
       this.empleados.splice(indice,1);
-  }
+      this.dataService.eliminarEmpleado(indice);
+      //construir en la base de datos desde el array
+      if(this.empleados!=null)
+        this.dataService.guardarEmpleados(this.empleados);
+ 
+      }
 
 }
